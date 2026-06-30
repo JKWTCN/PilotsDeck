@@ -1161,7 +1161,7 @@
     <None Update="Plugin\layout-pilotsdeck.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="manifest.json">
+    <None Update="*.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Plugin\PI\css\property-inspector.css">
@@ -1186,6 +1186,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Plugin\PI\js\pi-Common.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Plugin\PI\js\pi-Localization.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Plugin\PI\js\pi_Common.js">

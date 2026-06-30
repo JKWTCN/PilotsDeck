@@ -19,6 +19,8 @@ function connectElgatoStreamDeckSocket(inPort, inUUID, inRegisterEvent, inInfo, 
 	uuid = inUUID;
 	actionInfo = JSON.parse(inActionInfo);
 	inInfo = JSON.parse(inInfo);
+	if (typeof loadPiLocalization === "function")
+		loadPiLocalization(inInfo);
 	websocket = new WebSocket('ws://localhost:' + inPort);
 
 	websocket.onopen = function () {

@@ -12,7 +12,7 @@ $buildConfiguration = $args[0]
 $pathBase = $args[1]
 $pathProject = $args[2]
 
-if ((Test-Path -Path (Join-Path $basePath "build.lck"))) {
+if ((Test-Path -Path (Join-Path $pathBase "build.lck"))) {
 	exit 0
 }
 

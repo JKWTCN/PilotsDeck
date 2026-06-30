@@ -52,7 +52,8 @@ namespace PilotsDeck.Tools
 
         public static BitmapImage GetAssemblyImage(string icon)
         {
-            return new BitmapImage(new Uri($"pack://application:,,,/{AppConfiguration.SC_CLIENT_NAME};component/UI/Icons/{icon}.png"));
+            string assemblyName = Assembly.GetExecutingAssembly().GetName().Name;
+            return new BitmapImage(new Uri($"pack://application:,,,/{assemblyName};component/UI/Icons/{icon}.png"));
         }
     }
 }
