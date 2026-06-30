@@ -20,15 +20,15 @@ namespace PilotsDeck.UI.ActionDesignerUI.ViewModels.Manipulators
             if (!string.IsNullOrWhiteSpace(Source.Name))
                 return Source.Name;
             else if (ManipulatorType == ELEMENT_MANIPULATOR.INDICATOR)
-                return $"Indicator ({ViewModelHelper.IndicatorTypes[Source.IndicatorType]})";
+                return $"{ViewModelHelper.T("Indicator")} ({ViewModelHelper.IndicatorTypes[Source.IndicatorType]})";
             else if (ManipulatorType == ELEMENT_MANIPULATOR.VISIBLE)
-                return $"{ViewModelHelper.ManipulatorTypes[Source.ManipulatorType]}{(Source.ResetVisibility ? " (Reset)" : "")}";
+                return $"{ViewModelHelper.ManipulatorTypes[Source.ManipulatorType]}{(Source.ResetVisibility ? $" ({ViewModelHelper.T("Reset")})" : "")}";
             else if (ManipulatorType == ELEMENT_MANIPULATOR.ROTATE)
-                return $"{ViewModelHelper.ManipulatorTypes[Source.ManipulatorType]}{(Source.RotateContinous ? " (Cont.)" : "")}";
+                return $"{ViewModelHelper.ManipulatorTypes[Source.ManipulatorType]}{(Source.RotateContinous ? $" ({ViewModelHelper.T("Cont.")})" : "")}";
             else if (ManipulatorType == ELEMENT_MANIPULATOR.TRANSPARENCY)
-                return $"{ViewModelHelper.ManipulatorTypes[Source.ManipulatorType]}{(Source.DynamicTransparency ? " (Dyn.)" : "")}";
+                return $"{ViewModelHelper.ManipulatorTypes[Source.ManipulatorType]}{(Source.DynamicTransparency ? $" ({ViewModelHelper.T("Dyn.")})" : "")}";
             else if (ManipulatorType == ELEMENT_MANIPULATOR.SIZEPOS)
-                return $"{ViewModelHelper.ManipulatorTypes[Source.ManipulatorType]}{(Source.ChangeSizePosDynamic ? " (Dyn.)" : "")}";
+                return $"{ViewModelHelper.ManipulatorTypes[Source.ManipulatorType]}{(Source.ChangeSizePosDynamic ? $" ({ViewModelHelper.T("Dyn.")})" : "")}";
             else if (ManipulatorType == ELEMENT_MANIPULATOR.COLOR)
                 return $"{ViewModelHelper.ManipulatorTypes[Source.ManipulatorType]} ({Source.Color})";
             else

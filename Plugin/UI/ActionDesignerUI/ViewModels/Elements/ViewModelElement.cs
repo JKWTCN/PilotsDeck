@@ -134,7 +134,7 @@ namespace PilotsDeck.UI.ActionDesignerUI.ViewModels.Elements
             get => Source.GetSize().Y;
             set => SetModelArray<float>(value, 1, null, null, nameof(ModelDisplayElement.Size));
         }
-        public virtual string CanvasString { get => $"Canvas Size: {ModelAction.Action.CanvasSize.X} x {ModelAction.Action.CanvasSize.Y}"; }
+        public virtual string CanvasString { get => $"{ViewModelHelper.T("Canvas Size")}: {ModelAction.Action.CanvasSize.X} x {ModelAction.Action.CanvasSize.Y}"; }
         public virtual ScaleType Scale { get => GetSourceValue<ScaleType>(); set => SetModelValue<ScaleType>(value); }
         public virtual Dictionary<ScaleType, string> ScaleTypes { get; } = ViewModelHelper.ScaleTypes;
         public virtual float Rotation { get => GetSourceValue<float>(); set => SetModelValue<float>(value); }
@@ -151,7 +151,7 @@ namespace PilotsDeck.UI.ActionDesignerUI.ViewModels.Elements
             else if (ElementType == DISPLAY_ELEMENT.PRIMITIVE)
                 return ViewModelHelper.PrimitiveTypes[Source.PrimitiveType];
             else if (ElementType == DISPLAY_ELEMENT.GAUGE)
-                return $"{(Source.GaugeIsArc ? "Arc" : "Bar")}";
+                return $"{(Source.GaugeIsArc ? ViewModelHelper.T("Arc") : ViewModelHelper.T("Bar"))}";
             else if (ElementType == DISPLAY_ELEMENT.IMAGE && !string.IsNullOrWhiteSpace(Source?.Image))
             {
                 int idx = Source.Image.LastIndexOf('/');

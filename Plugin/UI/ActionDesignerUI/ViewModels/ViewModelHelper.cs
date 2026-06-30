@@ -4,6 +4,7 @@ using PilotsDeck.Actions.Advanced.SettingsModel;
 using PilotsDeck.Plugin;
 using PilotsDeck.Plugin.Render;
 using PilotsDeck.Simulator;
+using PilotsDeck.UI.ActionDesignerUI;
 using PilotsDeck.UI.ActionDesignerUI.TreeViews;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,9 @@ namespace PilotsDeck.UI.ActionDesignerUI.ViewModels
 
     public static class ViewModelHelper
     {
-        public static Dictionary<DISPLAY_ELEMENT, string> ElementTypes { get; } = new()
+        public static string T(string text) => DesignerLocalization.Translate(text);
+
+        private static Dictionary<DISPLAY_ELEMENT, string> ElementTypesSource { get; } = new()
         {
             {DISPLAY_ELEMENT.IMAGE, "Image" },
             {DISPLAY_ELEMENT.VALUE, "Value" },
@@ -32,6 +35,7 @@ namespace PilotsDeck.UI.ActionDesignerUI.ViewModels
             {DISPLAY_ELEMENT.GAUGE, "Gauge" },
             {DISPLAY_ELEMENT.PRIMITIVE, "Primitive" },
         };
+        public static Dictionary<DISPLAY_ELEMENT, string> ElementTypes => DesignerLocalization.TranslateDictionary(ElementTypesSource);
 
         public static void SetElementTypes(Collection<KeyValuePair<Enum, string>> target)
         {
@@ -41,37 +45,37 @@ namespace PilotsDeck.UI.ActionDesignerUI.ViewModels
 
         public static void SetManipulatorTypes(Collection<KeyValuePair<Enum, string>> target, DISPLAY_ELEMENT type)
         {
-            target.Add(new(ELEMENT_MANIPULATOR.VISIBLE, "Visible"));
+            target.Add(new(ELEMENT_MANIPULATOR.VISIBLE, T("Visible")));
             if (type == DISPLAY_ELEMENT.VALUE)
-                target.Add(new(ELEMENT_MANIPULATOR.FORMAT, "Format"));
+                target.Add(new(ELEMENT_MANIPULATOR.FORMAT, T("Format")));
             if (type == DISPLAY_ELEMENT.GAUGE)
-                target.Add(new(ELEMENT_MANIPULATOR.INDICATOR, "Indicator"));
-            target.Add(new(ELEMENT_MANIPULATOR.COLOR, "Color"));
-            target.Add(new(ELEMENT_MANIPULATOR.SIZEPOS, "Size / Position"));
-            target.Add(new(ELEMENT_MANIPULATOR.ROTATE, "Rotate"));
-            target.Add(new(ELEMENT_MANIPULATOR.TRANSPARENCY, "Transparency"));
-            target.Add(new(ELEMENT_MANIPULATOR.FLASH, "Flash"));
+                target.Add(new(ELEMENT_MANIPULATOR.INDICATOR, T("Indicator")));
+            target.Add(new(ELEMENT_MANIPULATOR.COLOR, T("Color")));
+            target.Add(new(ELEMENT_MANIPULATOR.SIZEPOS, T("Size / Position")));
+            target.Add(new(ELEMENT_MANIPULATOR.ROTATE, T("Rotate")));
+            target.Add(new(ELEMENT_MANIPULATOR.TRANSPARENCY, T("Transparency")));
+            target.Add(new(ELEMENT_MANIPULATOR.FLASH, T("Flash")));
         }
 
         public static Dictionary<ELEMENT_MANIPULATOR, string> GetManipulatorTypes(TreeItemData item)
         {
             Dictionary<ELEMENT_MANIPULATOR, string> dict = [];
 
-            dict.Add(ELEMENT_MANIPULATOR.VISIBLE, "Visible");
+            dict.Add(ELEMENT_MANIPULATOR.VISIBLE, T("Visible"));
             if (item?.ElementType == DISPLAY_ELEMENT.VALUE || item == null)
-                dict.Add(ELEMENT_MANIPULATOR.FORMAT, "Format");
+                dict.Add(ELEMENT_MANIPULATOR.FORMAT, T("Format"));
             if (item?.ElementType == DISPLAY_ELEMENT.GAUGE || item == null)
-                dict.Add(ELEMENT_MANIPULATOR.INDICATOR, "Indicator");
-            dict.Add(ELEMENT_MANIPULATOR.COLOR, "Color");
-            dict.Add(ELEMENT_MANIPULATOR.SIZEPOS, "Size / Position");
-            dict.Add(ELEMENT_MANIPULATOR.ROTATE, "Rotate");
-            dict.Add(ELEMENT_MANIPULATOR.TRANSPARENCY, "Transparency");
-            dict.Add(ELEMENT_MANIPULATOR.FLASH, "Flash");
+                dict.Add(ELEMENT_MANIPULATOR.INDICATOR, T("Indicator"));
+            dict.Add(ELEMENT_MANIPULATOR.COLOR, T("Color"));
+            dict.Add(ELEMENT_MANIPULATOR.SIZEPOS, T("Size / Position"));
+            dict.Add(ELEMENT_MANIPULATOR.ROTATE, T("Rotate"));
+            dict.Add(ELEMENT_MANIPULATOR.TRANSPARENCY, T("Transparency"));
+            dict.Add(ELEMENT_MANIPULATOR.FLASH, T("Flash"));
 
             return dict;
         }
 
-        public static Dictionary<ELEMENT_MANIPULATOR, string> ManipulatorTypes { get; } = new()
+        private static Dictionary<ELEMENT_MANIPULATOR, string> ManipulatorTypesSource { get; } = new()
         {
             { ELEMENT_MANIPULATOR.VISIBLE, "Visible" },
             { ELEMENT_MANIPULATOR.FORMAT, "Format" },
@@ -82,8 +86,9 @@ namespace PilotsDeck.UI.ActionDesignerUI.ViewModels
             { ELEMENT_MANIPULATOR.TRANSPARENCY, "Transparency" },
             { ELEMENT_MANIPULATOR.FLASH, "Flash" },
         };
+        public static Dictionary<ELEMENT_MANIPULATOR, string> ManipulatorTypes => DesignerLocalization.TranslateDictionary(ManipulatorTypesSource);
 
-        public static Dictionary<PrimitiveType, string> PrimitiveTypes { get; } = new()
+        private static Dictionary<PrimitiveType, string> PrimitiveTypesSource { get; } = new()
         {
             { PrimitiveType.LINE, "Line" },
             { PrimitiveType.RECTANGLE, "Rectangle" },
@@ -91,9 +96,10 @@ namespace PilotsDeck.UI.ActionDesignerUI.ViewModels
             { PrimitiveType.CIRCLE, "Ellipse" },
             { PrimitiveType.CIRCLE_FILLED, "Ellipse Filled" },
         };
+        public static Dictionary<PrimitiveType, string> PrimitiveTypes => DesignerLocalization.TranslateDictionary(PrimitiveTypesSource);
 
 
-        public static Dictionary<ActionTemplate, string> ActionTemplates { get; } = new()
+        private static Dictionary<ActionTemplate, string> ActionTemplatesSource { get; } = new()
         {
             { ActionTemplate.NONE, "No Template" },
             { ActionTemplate.DISPLAY, "Display Value" },
@@ -103,6 +109,7 @@ namespace PilotsDeck.UI.ActionDesignerUI.ViewModels
             { ActionTemplate.RADIO, "COM Radio" },
             { ActionTemplate.GAUGE, "Display Gauge" },
         };
+        public static Dictionary<ActionTemplate, string> ActionTemplates => DesignerLocalization.TranslateDictionary(ActionTemplatesSource);
 
         public static void SetTemplateTypes(Collection<KeyValuePair<Enum, string>> target)
         {
@@ -110,7 +117,7 @@ namespace PilotsDeck.UI.ActionDesignerUI.ViewModels
                 target.Add(new(type.Key, type.Value));
         }
 
-        public static Dictionary<IndicatorType, string> IndicatorTypes { get; } = new()
+        private static Dictionary<IndicatorType, string> IndicatorTypesSource { get; } = new()
         {
             { IndicatorType.TRIANGLE, "Triangle" },
             { IndicatorType.CIRCLE, "Circle" },
@@ -118,16 +125,18 @@ namespace PilotsDeck.UI.ActionDesignerUI.ViewModels
             { IndicatorType.LINE, "Line" },
             { IndicatorType.IMAGE, "Image" },
         };
+        public static Dictionary<IndicatorType, string> IndicatorTypes => DesignerLocalization.TranslateDictionary(IndicatorTypesSource);
 
-        public static Dictionary<CenterType, string> CenterTypes { get; } = new()
+        private static Dictionary<CenterType, string> CenterTypesSource { get; } = new()
         {
             { CenterType.NONE, "No Centering" },
             { CenterType.HORIZONTAL, "Horizontal" },
             { CenterType.VERTICAL, "Vertical" },
             { CenterType.BOTH, "Both" },
         };
+        public static Dictionary<CenterType, string> CenterTypes => DesignerLocalization.TranslateDictionary(CenterTypesSource);
 
-        public static Dictionary<ScaleType, string> ScaleTypes { get; } = new()
+        private static Dictionary<ScaleType, string> ScaleTypesSource { get; } = new()
         {
             { ScaleType.NONE, "No Scaling" },
             { ScaleType.DEFAULT_KEEP, "Scale to Default Raster" },
@@ -135,17 +144,18 @@ namespace PilotsDeck.UI.ActionDesignerUI.ViewModels
             { ScaleType.DEVICE_KEEP, "Scale to Device Raster" },
             { ScaleType.DEVICE_STRETCH, "Stretch to Device Raster" },
         };
+        public static Dictionary<ScaleType, string> ScaleTypes => DesignerLocalization.TranslateDictionary(ScaleTypesSource);
 
         public static Dictionary<SimCommandType, string> GetSimTypes()
         {
             Dictionary<SimCommandType, string> dict = [];
             var model = new PropertyInspectorModel().ActionTypes;
             foreach (var item in model)
-                dict.Add(item.Value, item.Key);
+                dict.Add(item.Value, T(item.Key));
             return dict;
         }
 
-        public static Dictionary<StreamDeckCommand, string> DeckCommandTypes { get; } = new()
+        private static Dictionary<StreamDeckCommand, string> DeckCommandTypesSource { get; } = new()
         {
             { StreamDeckCommand.KEY_DOWN, "Key Down" },
             { StreamDeckCommand.KEY_UP, "Key Up" },
@@ -155,8 +165,9 @@ namespace PilotsDeck.UI.ActionDesignerUI.ViewModels
             { StreamDeckCommand.DIAL_RIGHT, "Dial Right" },
             { StreamDeckCommand.TOUCH_TAP, "Touch Tap" },
         };
+        public static Dictionary<StreamDeckCommand, string> DeckCommandTypes => DesignerLocalization.TranslateDictionary(DeckCommandTypesSource);
 
-        public static Dictionary<Comparison, string> ComparisonTypes { get; } = new()
+        private static Dictionary<Comparison, string> ComparisonTypesSource { get; } = new()
         {
             { Comparison.LESS, "<" },
             { Comparison.LESS_EQUAL, "<=" },
@@ -168,5 +179,6 @@ namespace PilotsDeck.UI.ActionDesignerUI.ViewModels
             { Comparison.NOT_CONTAINS, "not contains" },
             { Comparison.HAS_CHANGED, "has changed" },
         };
+        public static Dictionary<Comparison, string> ComparisonTypes => DesignerLocalization.TranslateDictionary(ComparisonTypesSource);
     }
 }

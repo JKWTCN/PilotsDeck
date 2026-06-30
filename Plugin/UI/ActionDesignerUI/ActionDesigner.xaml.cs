@@ -38,6 +38,7 @@ namespace PilotsDeck.UI.ActionDesignerUI
         public ActionDesigner(ActionMeta action)
         {
             InitializeComponent();
+            DesignerLocalization.Apply(this);
             Dispatcher.UnhandledException += Dispatcher_UnhandledException;
 
             Action = action;
@@ -51,10 +52,11 @@ namespace PilotsDeck.UI.ActionDesignerUI
             ShutdownMonitor.Tick += CheckShutdown;
             ShutdownMonitor.Start();
 
+            string title = DesignerLocalization.Translate("Action Designer");
             if (!string.IsNullOrWhiteSpace(Action.Title))
-                this.Title = $"Action Designer - '{Action.Title}' ({Action.Context.ToUpperInvariant()})";
+                this.Title = $"{title} - '{Action.Title}' ({Action.Context.ToUpperInvariant()})";
             else
-                this.Title = $"Action Designer - {Action.Context.ToUpperInvariant()}";
+                this.Title = $"{title} - {Action.Context.ToUpperInvariant()}";
 
             ToggleElementsCommand = new RelayCommand(() => VisibilityElements = !VisibilityElements);
             ToggleCommandsCommand = new RelayCommand(() => VisibilityCommands = !VisibilityCommands);
@@ -64,6 +66,7 @@ namespace PilotsDeck.UI.ActionDesignerUI
             InitializeTreeViews();
             InitializeSubscribtions();
             ResizeContent();
+            DesignerLocalization.Apply(this);
         }
 
         protected virtual void InitializeSubscribtions()
@@ -188,6 +191,7 @@ namespace PilotsDeck.UI.ActionDesignerUI
             else if (CurrentItem.IsCommandType())
                 ElementView.Content = new ViewCommandType(CurrentItem.DeckCommandType, ModelAction, this);
 
+            DesignerLocalization.Apply(ElementView);
             ResizeContent();
             if (CurrentItem.IsElementTree())
                 TreeViewElements.ViewModelCollection.RefreshFocus = true;

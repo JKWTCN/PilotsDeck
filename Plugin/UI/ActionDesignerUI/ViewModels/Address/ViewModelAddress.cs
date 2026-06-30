@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using PilotsDeck.Resources.Variables;
+using PilotsDeck.UI.ActionDesignerUI;
 using System;
 
 namespace PilotsDeck.UI.ActionDesignerUI.ViewModels.Address
@@ -18,7 +19,7 @@ namespace PilotsDeck.UI.ActionDesignerUI.ViewModels.Address
         protected bool _IsTyping = false;
 
         [ObservableProperty]
-        protected string _LabelDescription = "Address:";
+        protected string _LabelDescription = DesignerLocalization.Translate("Address:");
 
         [ObservableProperty]
         protected string _LabelInputCheck = "";
@@ -32,7 +33,7 @@ namespace PilotsDeck.UI.ActionDesignerUI.ViewModels.Address
         public ViewModelAddress(IModelAddress source, string labelText) : base(source, source.ModelAction)
         {
             if (!string.IsNullOrWhiteSpace(labelText))
-                LabelDescription = labelText;
+                LabelDescription = DesignerLocalization.Translate(labelText);
         }
 
         protected override void InitializeModel()

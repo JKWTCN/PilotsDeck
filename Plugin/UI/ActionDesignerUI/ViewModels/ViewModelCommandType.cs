@@ -19,7 +19,7 @@ namespace PilotsDeck.UI.ActionDesignerUI.ViewModels
             set { ActionDelays[CommandType] = value; UpdateAction(); }
         }
 
-        public override string DisplayName => CommandType.ToString();
+        public override string DisplayName => ViewModelHelper.DeckCommandTypes[CommandType];
         public override string Name { get => DisplayName; set { } }
     }
 }

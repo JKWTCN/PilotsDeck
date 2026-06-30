@@ -138,17 +138,17 @@ namespace PilotsDeck.UI.ActionDesignerUI.ViewModels
         protected virtual string GetNameTypeAdd()
         {
             if (CheckStateTemplate())
-                return "Template";
+                return ViewModelHelper.T("Template");
             else if (CurrentItem.IsElementAdd())
-                return "Element";
+                return ViewModelHelper.T("Element");
             else if (CurrentItem.IsCommandType())
-                return "Command";
+                return ViewModelHelper.T("Command");
             else if (CheckStateManipulator())
-                return "Manipulator";
+                return ViewModelHelper.T("Manipulator");
             else if (CheckStateCondition())
-                return "Condition";
+                return ViewModelHelper.T("Condition");
             else
-                return "None";
+                return ViewModelHelper.T("None");
         }
 
         protected virtual BitmapImage GetTypeIcon()

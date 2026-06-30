@@ -27,6 +27,7 @@ namespace PilotsDeck.UI.ActionDesignerUI
         public DialogImage(string selectedImage = "", Window parent = null)
         {
             InitializeComponent();
+            DesignerLocalization.Apply(this);
             ImageResult = selectedImage;
             Model = new();
             ParentWindow = parent;

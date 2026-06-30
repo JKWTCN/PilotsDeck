@@ -1,4 +1,5 @@
 ﻿using CFIT.AppTools;
+using PilotsDeck.UI.ActionDesignerUI;
 using PilotsDeck.UI.ActionDesignerUI.ViewModels.Address;
 using System;
 using System.Windows;
@@ -56,7 +57,7 @@ namespace PilotsDeck.UI.ActionDesignerUI.Views.Controls
         protected virtual void UpdateValue()
         {
             if (ViewModel.HasValue && ViewModel.CheckAddressValid())
-                ViewModel.LabelValue = $"Current Value: {ViewModel?.Value ?? "0"}";
+                ViewModel.LabelValue = $"{DesignerLocalization.Translate("Current Value")}: {ViewModel?.Value ?? "0"}";
             else
                 ViewModel.LabelValue = "";
         }
@@ -66,12 +67,12 @@ namespace PilotsDeck.UI.ActionDesignerUI.Views.Controls
             if (ViewModel.CheckAddressValid())
             {
                 ViewModel.LabelInputCheck = "";
-                ViewModel.LabelType = $"Type: {ViewModel?.DisplayType}";
+                ViewModel.LabelType = $"{DesignerLocalization.Translate("Type")}: {ViewModel?.DisplayType}";
                 InputAddress.BorderBrush = BrushValid;
             }
             else
             {
-                ViewModel.LabelInputCheck = "Invalid Syntax";
+                ViewModel.LabelInputCheck = DesignerLocalization.Translate("Invalid Syntax");
                 ViewModel.LabelType = "";
                 InputAddress.BorderBrush = BrushInvalid;
             }
@@ -83,12 +84,12 @@ namespace PilotsDeck.UI.ActionDesignerUI.Views.Controls
         {
             if (ViewModel.CheckInputValid(InputAddress?.Text, out Enum detectedType))
             {
-                ViewModel.LabelInputCheck = $"Valid {detectedType}";
+                ViewModel.LabelInputCheck = $"{DesignerLocalization.Translate("Valid")} {detectedType}";
                 InputAddress.BorderBrush = BrushValid;
             }
             else
             {
-                ViewModel.LabelInputCheck = "Invalid Syntax";
+                ViewModel.LabelInputCheck = DesignerLocalization.Translate("Invalid Syntax");
                 InputAddress.BorderBrush = BrushInvalid;
             }
             ViewModel.LabelType = "";

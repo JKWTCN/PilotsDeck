@@ -1,5 +1,6 @@
 ﻿using CFIT.AppFramework.UI.ViewModels;
 using CFIT.AppTools;
+using PilotsDeck.UI.ActionDesignerUI;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -22,6 +23,7 @@ namespace PilotsDeck.UI.ActionDesignerUI.ColorStore
         public DialogColor(Color current, Window parent = null)
         {
             InitializeComponent();
+            DesignerLocalization.Apply(this);
             ParentWindow = parent;
             InitialColor = current;
             this.Activated += OnActivated;

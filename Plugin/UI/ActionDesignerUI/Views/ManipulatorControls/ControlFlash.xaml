@@ -36,7 +36,7 @@
             Stop on Interaction:
         </Label>
         <CheckBox Grid.Row="1" Grid.Column="1" IsChecked="{Binding FlashResetOnInteraction}" Margin="0,8,0,0" HorizontalAlignment="Left" Style="{StaticResource CheckboxDefault}">
-            Stop Flashing when a StreamDeck Command was received (instead of the Conditions being false)
+            Stop Flashing when a StreamDock Command was received (instead of the Conditions being false)
         </CheckBox>
 
         <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource DesignerLabelM8}">
