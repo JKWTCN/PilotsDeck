@@ -1,9 +1,11 @@
-# PilotsDeck
-Directly check & control your FlightSim from the StreamDeck!
+# PilotsDock
+Directly check & control your FlightSim from StreamDeck and StreamDock devices!
 <br/><br/>
 
 # 1 - Introduction
-PilotsDeck is a Plugin for Elegato's StreamDeck with the Ability to **trigger Cockpit-Controls** in different Ways and especially reading & **displaying a Control's State** on the StreamDeck as Text, Image, Bar/Arc or a Combination thereof. It is lean & mean, flexible, completely Open-Source and Free-to-Use.<br/><br/>
+PilotsDock is a fork of [PilotsDeck](https://github.com/Fragtality/PilotsDeck), focused on MiraBox/HotSpot StreamDock compatibility while keeping the original StreamDeck functionality where supported. It is a Plugin with the Ability to **trigger Cockpit-Controls** in different Ways and especially reading & **displaying a Control's State** on the device as Text, Image, Bar/Arc or a Combination thereof. It is lean & mean, flexible, completely Open-Source and Free-to-Use.<br/><br/>
+
+This fork exists because StreamDock and StreamDeck APIs have started to differ in practical behavior. Runtime identifiers, plugin folder names and executable names may still use `PilotsDeck`/`pilotsdeck` for compatibility with existing profiles, installers and plugin data.<br/><br/>
 
 StreamDeck-wise it behaves like any other StreamDeck Plugin: it **runs alongside other Plugins** and you can Drag, Drop, Copy, Paste the Actions like any other Action in the StreamDeck Software between your Folders, Pages or even different StreamDecks. The Action Configuration is done through the standard "Property Inspector" of the StreamDeck UI (for the "classic" Actions) or its own "Action Designer" UI (for the new Composite Action). But regardless of the UI: the Configuration is stored in the StreamDeck Profile - You can create, export and share Profiles with the Plugin's Actions. On Top of the StreamDeck builtin Copy & Paste, it has also its own Mechanic allowing to **share single Actions** via Text with someone else.<br/><br/>
 Installation is done through its own **Installer** which will check all Requirements and installs them for you if necessary. With the included **Profile Manager App** you can easily install **Profile Packages** (containing the Profiles, Images and Scripts) and can map your existing StreamDeck Profiles for specific Airplanes or Simulators so that the Plugin **automatically switches** the Profile(s) on the StreamDeck(s). You can write Scripts to directly read Values from a Function, or trigger a Function as Command - all in its own **internal Lua Engine** (Credits to: Neolithos for NeoLua!).<br/>
@@ -14,7 +16,7 @@ For Prepar3D (and theoretically FSX) FSUIPC is a Requirement, for MSFS it is Opt
 It is designed for **advanced Sim-Users** which "know how to do Stuff": it does not give you any Lists to select Stuff from. If you know how to read Control-States for your Plane (e.g. which Variables to use) and how to trigger these Controls (e.g. which Command to use), you can quickly define Actions for that on the StreamDeck. Since it does not limit your Selection by a predefined List, you can do everything the Connection/Simulator currently allows 😉<br/>
 If you don't: be eager to read & learn! 😅 I'll try to give some Background in the Readme, but you have to take it from there!<br/><br/>
 
-**Note**: PilotsDeck is 100% free and Open-Source. The Software and the Developer do **not have any Affiliation to Flight Panels**. You basically spend Money instead of Time to let a Power-User create the Profile(s) for you. That is totally fine - *IF* you knew you had the Option. Choose the Approach that suits you best! 😃<br/><br/>
+**Note**: PilotsDock is 100% free and Open-Source. The Software and the Developer do **not have any Affiliation to Flight Panels**. You basically spend Money instead of Time to let a Power-User create the Profile(s) for you. That is totally fine - *IF* you knew you had the Option. Choose the Approach that suits you best! 😃<br/><br/>
 
 User-Contributed and my Profiles for specific Planes are shared/linked under [Integrations](Integrations/). Since there aren't that many: If your Plane is not among these, they can at least serve as Example on what you could do:<br/>
 <img src="img/Example01XL.jpg" width="420"><br/>
@@ -96,13 +98,13 @@ How to add Custom Images is described under [3.3 - Custom Images](#33---custom-i
 <br/><br/><br/>
 
 ## 1.4 - Install, Update, Remove
-Just [Download](https://github.com/Fragtality/PilotsDeck/releases/latest) & Run the **Installer** Binary! It will check and install all Requirements and installs/updates the Plugin (or remove it).<br/>
+Just [Download](https://github.com/JKWTCN/PilotsDock/releases/latest) & Run the **Installer** Binary! It will check and install all Requirements and installs/updates the Plugin (or remove it).<br/>
 On the second Installer Page are some Options to customize your Installation:
 - Desktop Icon to the Profile Manager App
 - Enable (and Check) FSUIPC7 as secondary Connector for MSFS
 - Install/Update the vJoy Driver
 - **Install Location**: Choose if the Plugin should be installed to Elegato StreamD**e**ck or MiraBox/HotSpot StreamD**o**ck
-  - :exclamation: The Plugin is primarily for StreamDeck and focuses on Compatibility with Elgato. As long as MiraBox/HotSpot mimics the same API, it should be fine.
+  - :exclamation: This fork focuses on MiraBox/HotSpot StreamDock compatibility. StreamDeck support is retained where the original API behavior still applies.
 
 <br/>
 
@@ -2177,7 +2179,7 @@ A Note on **networked** Installations for **X-Plane**: the Plugin has no Way to 
 
 ### 4.2.1 - General Guidlines
 
-**First**, check if you see the Plugin's Actions available in the StreamDeck GUI (on the right Side). If you don't see them, verify that the Plugin was installed in the correct Path. The Path to the Executable should be: `%appdata%\Elgato\StreamDeck\Plugins\com.extension.pilotsdeck.sdPlugin\PilotsDeck.exe`.<br/>
+**First**, check if you see the Plugin's Actions available in the StreamDeck GUI (on the right Side). If you don't see them, verify that the Plugin was installed in the correct Path. The Path to the Executable should be: `%appdata%\Elgato\StreamDeck\Plugins\com.extension.pilotsdeck.sdPlugin\PilotsDock.exe`.<br/>
 <br/>
 **Second**, if you see the Actions but you can't configure any Action because the Dropdown Boxes for Command Types and Images are not filled: it is very likely that the Executable and/or its DLLs are blocked by some Security Mechanic. The Dropdowns not working is only the "first Symptom" - the Actions/Buttons on the StreamDeck will generally not work in any Sim!<br/>
 One Reason could be the Windows Explorer / Zip Folder Mechanic for "Files downloaded from the Internet". Run that in Powershell \(change \<USERNAME\> accordingly\):
@@ -2259,7 +2261,8 @@ A complete MCDU Keyboard, with Subpages for Numbers and Letters, on the XL. It i
 <br/><br/><br/>
 
 ## 6 - License & Acknowledgements
-The Plugin is published under the [MIT License](https://github.com/Fragtality/PilotsDeck/blob/master/LICENSE).<br/><br/>
+PilotsDock is a fork of [PilotsDeck](https://github.com/Fragtality/PilotsDeck) by Fragtality.<br/>
+The Plugin is published under the [MIT License](https://github.com/JKWTCN/PilotsDock/blob/master/LICENSE).<br/><br/>
 Using NeoLua Engine from [neolithos](https://github.com/neolithos/neolua)<br/>
 Using Code from "StreamDeckToolkit" from FritzAndFriends, published under [MIT License](https://github.com/FritzAndFriends/StreamDeckToolkit/blob/dev/LICENSE)<br/>
 Uses "FSUIPC Client DLL for .NET" from Paul Henty \([License](http://fsuipc.paulhenty.com/index.html#licence)) and "FSUIPC" from Pete and John Dowson.<br/>

@@ -9,7 +9,7 @@
     <UseWPF>true</UseWPF>
     <PlatformTarget>x64</PlatformTarget>
     <StartupObject>PilotsDeck.App</StartupObject>
-    <AssemblyName>PilotsDeck</AssemblyName>
+    <AssemblyName>PilotsDock</AssemblyName>
     <ApplicationIcon>Plugin\Images\PluginIcon.ico</ApplicationIcon>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <Platforms>x64</Platforms>

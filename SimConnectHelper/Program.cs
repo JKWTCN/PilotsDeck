@@ -29,7 +29,7 @@ namespace SimConnectHelper
                 }
 
                 Logger.Write($"Testing Mode ...");
-                bool pluginConfig = File.Exists(PluginConfig.ConfigFileName) && File.Exists("PilotsDeck.exe");
+                bool pluginConfig = File.Exists(PluginConfig.ConfigFileName) && File.Exists("PilotsDock.exe");
                 if (pluginConfig)
                     Logger.Write($"Client-Mode: Modify PluginConfig");
                 else
@@ -47,6 +47,6 @@ namespace SimConnectHelper
             }
         }
 
-        
+
     }
 }

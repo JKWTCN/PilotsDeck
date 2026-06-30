@@ -180,14 +180,14 @@
       "UUID": "com.extension.pilotsdeck.action.profile.switcher"
     }
   ],
-  "Category": "PilotsDeck",
-  "CategoryIcon": "Plugin/Images/category",
-  "Author": "Fragtality",
-  "CodePathWin": "PilotsDeck.exe",
-  "Description": "Directly control your FlightSim from your StreamDeck! Map Actions to Sim Events and show Sim Variables on the Buttons.\r\n\r\nNOTE FOR UPGRADES: Please use the Installer from the GitHub Page (under Releases)!",
-  "Name": "PilotsDeck",
+  "Category": "PilotsDock",
+  "CategoryIcon": "Plugin/Images/PluginIcon",
+  "Author": "Fragtality;iCloudWar",
+  "CodePathWin": "PilotsDock.exe",
+  "Description": "Directly control your FlightSim from your StreamDock! Map Actions to Sim Events and show Sim Variables on the Buttons.\r\n\r\nNOTE FOR UPGRADES: Please use the Installer from the GitHub Page (under Releases)!",
+  "Name": "PilotsDock",
   "Icon": "Plugin/Images/PluginIcon",
-  "URL": "https://github.com/Fragtality/PilotsDeck",
+  "URL": "https://github.com/JKWTCN/PilotsDock",
   "Version": "0.9.2.0",
   "SDKVersion": 2,
   "Software": {

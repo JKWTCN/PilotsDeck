@@ -26,7 +26,7 @@ namespace Installer
 
         //ConfigBase
         public override string ProductName { get { return PluginBinary; } }
-        public static string PluginBinary { get { return "PilotsDeck"; } }
+        public static string PluginBinary { get { return "PilotsDock"; } }
         public override string ProductConfigFile { get { return $"PluginConfig.json"; } }
         public static readonly string AppConfigUseFsuipcForMSFS = "UseFsuipcForMSFS";
         public virtual string ProductColorFile { get { return $"ColorStore.json"; } }

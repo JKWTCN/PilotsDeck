@@ -21,7 +21,7 @@ namespace ProfileManager
 
         //ConfigBase
         public override string ProductName { get { return PluginBinary; } }
-        public static string PluginBinary { get { return "PilotsDeck"; } }
+        public static string PluginBinary { get { return "PilotsDock"; } }
         public override string ProductConfigFile { get { return $"PluginConfig.json"; } }
         public override string ProductConfigPath { get { return Path.Combine(ProductPath, ProductConfigFile); } }
         public override string ProductExePath { get { return Path.Combine(ProductPath, ProductExe); } }

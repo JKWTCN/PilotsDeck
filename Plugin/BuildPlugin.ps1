@@ -82,7 +82,7 @@ try {
 	## Stop StreamDeck
 	if ($cfgDeploy) {
 		Write-Host "Stopping StreamDeck and Plugin ..."
-		Get-Process -Name ("StreamDeck", "PilotsDeck") -ErrorAction SilentlyContinue | Stop-Process –force -ErrorAction SilentlyContinue
+		Get-Process -Name ("StreamDeck", "PilotsDeck", "PilotsDock") -ErrorAction SilentlyContinue | Stop-Process –force -ErrorAction SilentlyContinue
 		Sleep(4)
 	}
 
@@ -139,7 +139,7 @@ try {
 	if ($cfgBuildInstaller -and $buildConfiguration -eq "Release") {
 		Write-Host "msbuild for Installer ..."
 		cd $msBuildDir
-		.\msbuild.exe (Join-Path $pathBase "\PilotsDeck.sln") /t:Installer:rebuild /p:Configuration="Release" /p:Platform=x64 /p:BuildProjectReferences=false -verbosity:minimal
+		.\msbuild.exe (Join-Path $pathBase "\PilotsDock.sln") /t:Installer:rebuild /p:Configuration="Release" /p:Platform=x64 /p:BuildProjectReferences=false -verbosity:minimal
 		if ($cfgDeploy) {
 			Write-Host "Copy version.json ..."
 			Copy-Item -Path (Join-Path $pathInstallerPayload "version.json") -Destination $pathPlugin -Force -ErrorAction SilentlyContinue | Out-Null
