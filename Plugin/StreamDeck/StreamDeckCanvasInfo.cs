@@ -17,7 +17,7 @@ namespace PilotsDeck.StreamDeck
         public PointF GetCanvasSize()
         {
             if (IsEncoder)
-                return new PointF(200, 100);
+                return new PointF(176, 112);
             else
             {
                 if (Type == StreamDeckType.StreamDeckXL)
